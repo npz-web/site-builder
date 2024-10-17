@@ -1,6 +1,6 @@
-# portfolio-builder
+# site builder
 
-A portfolio builder/static site generator built with Keystatic CMS and Astro.
+forked from [klalicki/portfolio-builder](https://github.com/klalicki/portfolio-builder), portfolio builder/static site generator built with Keystatic CMS and Astro.
 
 ## Note
 
