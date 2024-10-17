@@ -115,20 +115,6 @@ export default defineMarkdocConfig({
         customClass: { type: String },
       },
     },
-    PortfolioView: {
-      render: component(
-        "./src/components/portfolioViews/PortfolioViewWrapper.astro"
-      ),
-      attributes: {
-        unique: { type: String },
-        portfolioLayout: { type: String },
-        customClass: { type: String },
-
-        projectSource: {
-          type: String,
-        },
-      },
-    },
 
     aside: {
       render: component("./src/components/Aside.astro"),
