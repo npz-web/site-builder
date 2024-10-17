@@ -13,7 +13,6 @@ import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
 
 import { typeOptions } from "./cms/singletons/typeOptions";
-import { pageArea } from "./cms/singletons/pageAreaSettings";
 import { fonts } from "./cms/singletons/fonts";
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
@@ -61,7 +60,6 @@ export default config({
     navigation: {
       Content: ["pages", "homepage"],
       "Layout/Appearance": [
-        "pageArea",
         "menu",
         "typeOptions",
       ],
@@ -128,7 +126,6 @@ export default config({
     typeOptions: typeOptions,
     general: generalSettings,
     menu: menuConfig,
-    pageArea: pageArea,
     fonts: fonts,
     homepage: singleton({
       label: "Homepage",
