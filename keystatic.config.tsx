@@ -60,10 +60,9 @@ export default config({
       },
     },
     navigation: {
-      Content: ["projects", "pages", "homepage", "portfolioGroups"],
+      Content: ["pages", "homepage"],
       "Layout/Appearance": [
         "pageArea",
-        "portfolioLayouts",
         "menu",
         "typeOptions",
       ],
@@ -74,67 +73,6 @@ export default config({
     kind: "local",
   },
   collections: {
-    projects: collection({
-      label: "Projects",
-      slugField: "title",
-      previewUrl: "/projects/{slug}",
-      path: "src/content/projects/*",
-      entryLayout: "content",
-      columns: ["sortID", "publishStatus"],
-      format: { contentField: "content" },
-      schema: {
-        title: fields.slug({ name: { label: "Title" } }),
-        sortID: fields.number({
-          label: "Sort ID",
-          description:
-            "this number is used to figure out the order for the All Projects portfolio group",
-        }),
-        hideTitle: fields.checkbox({
-          label: "Hide Title",
-          defaultValue: false,
-          description:
-            "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
-        }),
-        line2: fields.text({ label: "Line 2 text for portfolio views" }),
-        line3: fields.text({ label: "Line 3 text for portfolio views" }),
-        thumbnail: fields.image({
-          label: "Thumbnail Image",
-          directory: "src/assets/images/pages",
-          publicPath: "../../assets/images/pages/",
-        }),
-        accent: customFields.colorPicker({
-          description: "an accenty color",
-          label: "Accent Color",
-          defaultValue: "#ff0000",
-        }),
-        publishStatus: fields.select({
-          label: "Published?",
-          description:
-            'Published means the page is publicly visible and will appear in the "all" portfolio type. Unpublished means the page is completely hidden. Unlisted means the page will be published, but will not be placed in any menus or portfolios unless specifically selected.',
-          defaultValue: "published",
-          options: [
-            { label: "Yes", value: "published" },
-            { label: "No", value: "unpublished" },
-            { label: "Unlisted", value: "unlisted" },
-          ],
-        }),
-        content: fields.markdoc({
-          label: "Content",
-          components: {
-            ...standardComponents,
-          },
-          options: {
-            table: false,
-
-            image: {
-              directory: "src/assets/images/pages",
-              publicPath: "../../assets/images/pages/",
-            },
-          },
-        }),
-      },
-    }),
-
     pages: collection({
       label: "Pages",
       slugField: "title",
@@ -184,41 +122,6 @@ export default config({
             },
           },
         }),
-      },
-    }),
-    portfolioGroups: collection({
-      label: "Portfolio Groups",
-      slugField: "name",
-      format: { contentField: "emptyContent" },
-      path: "src/content/portfolioGroups/*",
-      schema: {
-        name: fields.slug({ name: { label: "Title" } }),
-        emptyContent: fields.emptyDocument(),
-        projectSource: fields.conditional(
-          fields.select({
-            label: "Which projects to include",
-            defaultValue: "all",
-            options: [
-              { label: "All", value: "all" },
-              { label: "Selected", value: "selected" },
-            ],
-          }),
-          {
-            all: customFields.uniquify({ label: "unif", description: "unif" }),
-            selected: fields.array(
-              fields.relationship({
-                label: "Select Projects",
-                collection: "projects",
-              }),
-              {
-                label: "Project",
-                itemLabel(props) {
-                  return props.value || "";
-                },
-              },
-            ),
-          },
-        ),
       },
     }),
   },
