@@ -104,7 +104,7 @@ const menuItems = [...homepage, ...pages]
         return {
           url: "/",
           title: page.data.title || "Home",
-          showInMenu: true,
+          showInMenu: false,
           subItems: [],
         };
       } else {
