@@ -9,7 +9,6 @@ import {
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import { Icon } from "@keystar/ui/icon";
 
-import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
 import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
 
@@ -127,7 +126,6 @@ export default config({
   },
   singletons: {
     typeOptions: typeOptions,
-    portfolioLayouts: portfolioLayouts,
     general: generalSettings,
     menu: menuConfig,
     pageArea: pageArea,
